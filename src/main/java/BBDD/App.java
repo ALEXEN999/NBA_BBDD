@@ -56,9 +56,10 @@ public class App
 
             // Ejercicio4
 
-            PreparedStatement st4 = connection.prepareStatement("SELECT * FROM jugadores LEFT JOIN estadisticas ON jugadores.codigo = estadisticas.jugador WHERE temporada = ? AND puntos_por_partido >10");
+            PreparedStatement st4 = connection.prepareStatement("SELECT * FROM jugadores LEFT JOIN estadisticas ON jugadores.codigo = estadisticas.jugador WHERE temporada = ? AND puntos_por_partido > ?");
 
             st4.setString(1,"04/05");
+            st4.setString(2,"10");
             //Consultem les dades de tots els usuaris
             rs = st4.executeQuery();
             while (rs.next()) System.out.println("Jugador: "+rs.getString("nombre")+" --> "+rs.getString("puntos_por_partido")+"\n-------------");
